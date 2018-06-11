@@ -1,0 +1,67 @@
+.left-menu{
+  position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 180rpx;
+    background-color: #f8f8f8;
+    font-size: 32rpx;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.left-menu .menu-item{
+  width: calc(100% - 16rpx);
+  height: 80rpx;
+  padding:0 8rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.left-menu .menu-item.menu-active{
+  border-left:8rpx solid red;
+  padding-left: 0;
+  background-color: #fff;
+}
+
+/* 右边商品区域 */
+.right-pro{
+  position: absolute;
+  left: 180rpx;
+  top:0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  display: flex;
+}
+.right-pro .pro-item{
+  padding:20rpx;
+}
+.right-pro .item-header{
+  display: inline-block;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  color: #fff;
+  background-color: red;
+  padding:0rpx 30rpx; 
+  margin: 10rpx auto;
+}
+.right-pro .pro-item-container{
+  font-size: 28rpx;
+}
+.pro-item-item{
+  width: calc((100% - 180rpx) / 3 );
+  display:inline-block;
+}
+.right-pro .pro-item-container image{
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  margin: 0 auto;
+}
+.right-pro .pro-item-container text{
+  display: block;
+  text-align: center;
+}
