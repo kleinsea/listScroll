@@ -2,33 +2,13 @@ let proListToTop = [], menuToTop = [], MENU = 0, windowHeight;
 // MENU ==> 是否为点击左侧进行滚动的，如果是，则不需要再次设置左侧的激活状态
 Page({
   data: {
-    leftMenu: [],
-    rightPro: [],
+    proList: [],
     currentActiveIndex: 0
   },
   onLoad: function (options) {
     const { proList } = require('../../proList.js')
-    const menuArr = [], proArr = []
-    proList.map((item, index) => {
-      menuArr.push({
-        name: item.opt_name,
-        imgUrl: item.image_url
-      })
-      const itemArr = []
-      item.children.map(item2 => {
-        itemArr.push({
-          name: item2.opt_name,
-          imgUrl: item2.image_url
-        })
-      })
-      proArr.push({
-        menuName: item.opt_name,
-        item: itemArr
-      })
-    })
     this.setData({
-      leftMenu: menuArr,
-      rightPro: proArr
+      proList: proList
     })
     // 确保页面数据已经刷新完毕~
     setTimeout(() => {
@@ -36,6 +16,7 @@ Page({
     }, 20)
   },
   changeMenu(e) {
+    // 改变左侧tab栏操作
     if (Number(e.target.id) === this.data.currentActiveIndex) return
     MENU = 1
     this.setData({
@@ -70,10 +51,10 @@ Page({
   },
   setMenuAnimation(i){
     // 设置动画，使menu滚动到指定位置。
-    if (menuToTop[i]) {
-      if (this.data.leftMenuTop === windowHeight) return
-      this.setData({
-        leftMenuTop: windowHeight
+    let self = this
+    if (menuToTop[i].animate) {
+      self.setData({
+        leftMenuTop: (menuToTop[i].top - windowHeight)
       })
     } else {
       if (this.data.leftMenuTop === 0) return
@@ -81,6 +62,11 @@ Page({
         leftMenuTop: 0
       })
     }
+  },
+  getActiveReacts(){
+    wx.createSelectorQuery().selectAll('.menu-active').boundingClientRect(function (rects) {
+      return rects[0].top
+    }).exec()
   },
   getAllRects() {
 
@@ -97,11 +83,13 @@ Page({
         success: function (res) {
           windowHeight = res.windowHeight / 2
           rects.forEach(function (rect) {
-            menuToTop.push(rect.top > windowHeight)
+            menuToTop.push({
+              top: rect.top,
+              animate:rect.top > windowHeight
+              })
           })
         }
       })
-
     }).exec()
   },
   // 获取系统的高度信息

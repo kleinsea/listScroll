@@ -35,6 +35,7 @@
   bottom: 0;
   background-color: #fff;
   display: flex;
+  overflow: hidden;
 }
 .right-pro .pro-item{
   padding:20rpx;
@@ -52,8 +53,8 @@
   font-size: 28rpx;
 }
 .pro-item-item{
-  width: calc((100% - 180rpx) / 3 );
-  display:inline-block;
+   width: calc((100% - 180rpx) / 3 );
+  display:inline-block; 
 }
 .right-pro .pro-item-container image{
   width: 100rpx;

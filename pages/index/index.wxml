@@ -1,14 +1,14 @@
 <view class="pro-container">
   <scroll-view class="left-menu" scroll-y scroll-with-animation="true" scroll-top="{{leftMenuTop}}">
-    <view class="menu-item {{index===currentActiveIndex?'menu-active':''}}" wx:for="{{leftMenu}}" wx:key="{{item.index}}" id="{{index}}" catchtap='changeMenu' >{{item.name}}</view>
+    <view class="menu-item {{index===currentActiveIndex?'menu-active':''}}" wx:for="{{proList}}" wx:key="{{item.index}}" id="{{index}}" catchtap='changeMenu' >{{item.opt_name}}</view>
   </scroll-view>
   <scroll-view class="right-pro" bindscroll = "scroll" scroll-y scroll-with-animation="true" scroll-top="{{rightProTop}}">
-    <view class="pro-item" wx:for="{{rightPro}}" wx:key="{{index}}">
-       <view class="item-header">{{item.menuName}}</view>
+    <view class="pro-item" wx:for="{{proList}}" wx:key="{{index}}">
+       <view class="item-header">{{item.opt_name}}</view>
         <view class="pro-item-container">
-          <view wx:for="{{item.item}}" wx:key="{{index}}" class="pro-item-item">
-            <image src="{{item.imgUrl}}"></image>
-            <text>{{item.name}}</text>
+          <view wx:for="{{item.children}}" wx:key="{{index}}" class="pro-item-item">
+            <image lazy-load="true" src="{{item.image_url}}"></image>
+            <text>{{item.opt_name}}</text>
           </view>
         </view>
     </view>
