@@ -6,7 +6,7 @@
     <view class="pro-item" wx:for="{{proList}}" wx:key="{{index}}">
        <view class="item-header">{{item.opt_name}}</view>
         <view class="pro-item-container">
-          <view wx:for="{{item.children}}" wx:key="{{index}}" class="pro-item-item">
+           <view wx:for="{{item.children}}" wx:key="{{index}}" class="pro-item-item"> 
             <image lazy-load="true" src="{{item.image_url}}"></image>
             <text>{{item.opt_name}}</text>
           </view>

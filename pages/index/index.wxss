@@ -31,9 +31,9 @@
   position: absolute;
   left: 180rpx;
   top:0;
-  right: 0;
   bottom: 0;
-  background-color: #fff;
+  width:calc(100% - 180rpx);
+  background-color: #fff;  
   display: flex;
   overflow: hidden;
 }
@@ -53,7 +53,7 @@
   font-size: 28rpx;
 }
 .pro-item-item{
-   width: calc((100% - 180rpx) / 3 );
+  width: calc((100% - 180rpx) / 2 );
   display:inline-block; 
 }
 .right-pro .pro-item-container image{

@@ -54,11 +54,13 @@ Page({
     let self = this
     
     if (menuToTop[i].animate) {
+      console.log(11111)
       // 节流操作
       if(timeoutId){
         clearTimeout(timeoutId)
       }
       timeoutId = setTimeout(()=>{
+        console.log(12138)
         self.setData({
           leftMenuTop: (menuToTop[i].top - windowHeight)
         })
