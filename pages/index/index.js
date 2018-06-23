@@ -1,4 +1,4 @@
-let proListToTop = [], menuToTop = [], MENU = 0, windowHeight;
+let proListToTop = [], menuToTop = [], MENU = 0, windowHeight,timeoutId;
 // MENU ==> 是否为点击左侧进行滚动的，如果是，则不需要再次设置左侧的激活状态
 Page({
   data: {
@@ -52,10 +52,17 @@ Page({
   setMenuAnimation(i){
     // 设置动画，使menu滚动到指定位置。
     let self = this
+    
     if (menuToTop[i].animate) {
-      self.setData({
-        leftMenuTop: (menuToTop[i].top - windowHeight)
-      })
+      // 节流操作
+      if(timeoutId){
+        clearTimeout(timeoutId)
+      }
+      timeoutId = setTimeout(()=>{
+        self.setData({
+          leftMenuTop: (menuToTop[i].top - windowHeight)
+        })
+      },50)
     } else {
       if (this.data.leftMenuTop === 0) return
       this.setData({
